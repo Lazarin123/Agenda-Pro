@@ -20,18 +20,21 @@ Plataforma de agendamento e gestão de serviços para prestadores gerenciarem ag
 ## Destaques técnicos
 
 ### Manipulação avançada de datas
+
 `src/lib/tz.js` e `src/lib/schedule.js`
 
 - Agendamentos armazenados em **UTC (ISO 8601)** e convertidos para o fuso do prestador apenas na exibição, usando `Intl.DateTimeFormat`.
 - Cálculo de slots com `date-fns` (`addMinutes`, `areIntervalsOverlapping`, etc.), respeitando expediente, almoço e buffer entre atendimentos.
 
 ### Calendário customizado
+
 `src/components/Calendar.jsx`
 
 - Sem biblioteca de calendário: grade de dia/semana com eventos posicionados proporcionalmente ao minuto, e visão mensal com resumo por dia.
 - Dias sem expediente e horário de almoço sinalizados visualmente.
 
 ### Formulários dinâmicos
+
 `src/components/ApptForm.jsx`
 
 - Regras de dependência: **serviço → duração → horários livres**.
@@ -55,11 +58,11 @@ npm run dev
 
 Abra o endereço exibido no terminal (normalmente http://localhost:5173).
 
-| Comando | Descrição |
-|---|---|
-| `npm run dev` | Servidor de desenvolvimento |
-| `npm run build` | Build de produção em `dist/` |
-| `npm run preview` | Pré-visualiza o build |
+| Comando           | Descrição                    |
+| ----------------- | ---------------------------- |
+| `npm run dev`     | Servidor de desenvolvimento  |
+| `npm run build`   | Build de produção em `dist/` |
+| `npm run preview` | Pré-visualiza o build        |
 
 Para restaurar os dados de exemplo, limpe o `localStorage` do navegador.
 
@@ -83,23 +86,14 @@ src/
 
 Em `src/lib/seed.js`, o objeto `DEFAULT_CFG` define:
 
-| Campo | Padrão | Descrição |
-|---|---|---|
-| `open` / `close` | `540` / `1080` | Expediente em minutos (09:00–18:00) |
-| `lunch` | `[720, 780]` | Almoço (12:00–13:00) |
-| `step` | `15` | Intervalo entre horários, em minutos |
-| `buffer` | `10` | Folga entre atendimentos, em minutos |
-| `days` | `[1,2,3,4,5]` | Dias úteis (0 = domingo) |
-| `tz` | `America/Sao_Paulo` | Fuso inicial |
-
-## Próximos passos
-
-- [ ] Cadastro e edição de serviços pela interface
-- [ ] Backend com API e banco de dados
-- [ ] Testes unitários (Vitest) para `getSlots` e `tz`
-- [ ] Agendamentos recorrentes
-- [ ] Lembretes por e-mail ou WhatsApp
-- [ ] Arrastar e soltar para reagendar
+| Campo            | Padrão              | Descrição                            |
+| ---------------- | ------------------- | ------------------------------------ |
+| `open` / `close` | `540` / `1080`      | Expediente em minutos (09:00–18:00)  |
+| `lunch`          | `[720, 780]`        | Almoço (12:00–13:00)                 |
+| `step`           | `15`                | Intervalo entre horários, em minutos |
+| `buffer`         | `10`                | Folga entre atendimentos, em minutos |
+| `days`           | `[1,2,3,4,5]`       | Dias úteis (0 = domingo)             |
+| `tz`             | `America/Sao_Paulo` | Fuso inicial                         |
 
 ## Licença
 
